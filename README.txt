@@ -1,4 +1,6 @@
-This utility creates a key/value across all resource files for a given string, the key remains the same and the value is translated to the appropriate language.
+This utility is aimed at developer who wish to automate inserting translations into .net .resx files.
+
+The utility creates a key/value across all resource files for a given string, the key remains the same and the value is translated to the appropriate language.
 
 The Bing Translator API is used to provide the translations.
 
