@@ -22,7 +22,7 @@ namespace ResourceTranslator.Impl
             string headerValue;
             //Get Client Id and Client Secret from https://datamarket.azure.com/developer/applications/
             //Refer obtaining AccessToken (http://msdn.microsoft.com/en-us/library/hh454950.aspx) 
-            AdmAuthentication admAuth = new AdmAuthentication("ResourceTranslator2013", "6oiXxi44oAjegBC8LpQIBKnBbFV+hkUa9wSz1K0Sim4=");
+            AdmAuthentication admAuth = new AdmAuthentication("ClientId", "ClientSecret");
             try
             {
                 admToken = admAuth.GetAccessToken();
