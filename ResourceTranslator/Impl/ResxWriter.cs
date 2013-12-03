@@ -16,7 +16,7 @@ namespace ResourceTranslator.Impl
     {
         private ResXResourceWriter writer;
         private Hashtable resourceEntries;
-        public void WriteToFile(FileInfoCollection fileInfoCollection, Dictionary<string, string> translations, string entryKey)
+        public void WriteToFile(FileInfoCollection fileInfoCollection, Dictionary<string, string> translations, string entryKey, TranslatorForm form)
         {
             resourceEntries = new Hashtable(translations);
 
@@ -25,7 +25,7 @@ namespace ResourceTranslator.Impl
                         if (fileInfo.Name.ToLower().Contains(translation.Key.ToLower()))
                         {
                             resourceEntries = new Hashtable() {{entryKey, translation.Value}};
-                            Helper.UpdateResourceFile(resourceEntries, fileInfo.FullName);
+                            Helper.UpdateResourceFile(resourceEntries, fileInfo.FullName, form);
                         }
 
         }

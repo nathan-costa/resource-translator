@@ -23,6 +23,8 @@ namespace ResourceTranslator.Data
             foreach(var language in languageCollection.Languages)
                 _filesInfo.Add(new FileInfo(FOLDER_ROOT +
                     FILE_NAME_START + language.Key + FILE_NAME_EXT));
+
+
         }
 
         public LanguageCollection LanguageCollection { get; set; }

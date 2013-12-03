@@ -22,12 +22,17 @@ namespace ResourceTranslator.Impl
             _fileInputValidator = fileInputValidator;
         }
 
-        public void ValidateResources(string key)
+        public void ValidateResources(string key, bool validateDefault)
         {
             _key = key;
             foreach (FileInfo fileInfo in _fileInfoCollection.FilesInfo)
             {
                 if (_fileInputValidator.KeyExists(fileInfo, key)) throw new Exception("Key exists in " + fileInfo.Name);
+            }
+
+            if (validateDefault)
+            {
+                if (_fileInputValidator.KeyExists(new FileInfo("c:\\TranslationTemp\\gbr.resx"), key)) throw new Exception("Key exists in gbr.resx");
             }
         }
 
@@ -37,9 +42,9 @@ namespace ResourceTranslator.Impl
         }
 
 
-        public void WriteToFile(FileWriter writer, Dictionary<string, string> translations)
+        public void WriteToFile(FileWriter writer, Dictionary<string, string> translations, TranslatorForm form)
         {
-            writer.WriteToFile(_fileInfoCollection, translations, _key);
+            writer.WriteToFile(_fileInfoCollection, translations, _key, form);
         }
     }
 }

@@ -5,14 +5,18 @@ using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using ResourceTranslator.Abs;
 
 namespace ResourceTranslator.Static
 {
     class Helper
     {
-        public static void UpdateResourceFile(Hashtable data, String path)
+        public static void UpdateResourceFile(Hashtable data, string path, TranslatorForm form)
         {
+            form.TextOutput = "Writing " + path + "...";
+
             Hashtable resourceEntries = new Hashtable();
+            bool check = false;
 
             //Get existing resources
             ResXResourceReader reader = new ResXResourceReader(path);
@@ -51,6 +55,21 @@ namespace ResourceTranslator.Static
             }
             resourceWriter.Generate();
             resourceWriter.Close();
+
+            //Check if entered correctly
+            reader = new ResXResourceReader(path);
+            if (reader != null)
+            {
+                foreach (DictionaryEntry d in reader)
+                    foreach (String key in resourceEntries.Keys)
+                    {
+                        if ((string) d.Key == key && (string) d.Value == (string) resourceEntries[key]) check = true;
+                    }
+                reader.Close();
+            }
+
+            if (check) form.TextOutput = path + " written successfully";
+            else form.TextOutput = path + " not written !!";
 
         }
     }

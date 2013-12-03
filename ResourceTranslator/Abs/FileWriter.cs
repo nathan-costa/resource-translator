@@ -9,6 +9,6 @@ namespace ResourceTranslator.Abs
 {
     public interface FileWriter
     {
-        void WriteToFile(FileInfoCollection fileInfoCollection, Dictionary<string, string> translations, string entryKey);
+        void WriteToFile(FileInfoCollection fileInfoCollection, Dictionary<string, string> translations, string entryKey, TranslatorForm form);
     }
 }
