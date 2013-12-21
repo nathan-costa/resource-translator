@@ -1,4 +1,4 @@
-This utility is aimed at developer who wish to automate inserting translations into .net .resx files.
+This utility is designed for developers who wish to automate the insertion of translations into .net .resx files.
 
 The utility creates a key/value across all resource files for a given string, the key remains the same and the value is translated to the appropriate language.
 
